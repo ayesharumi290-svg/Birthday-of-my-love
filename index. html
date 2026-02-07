@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Anu My Love</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+        background: #ffccff;
+        overflow: hidden;
+    }
+    h1 {
+        color: #ff0066;
+        font-size: 3em;
+        margin-top: 20px;
+        text-shadow: 2px 2px 5px #ff99cc;
+    }
+    #countdown {
+        font-size: 2em;
+        margin: 20px 0;
+        color: #660066;
+    }
+    #messageBtn {
+        padding: 15px 30px;
+        font-size: 1.2em;
+        background: #ff6699;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        cursor: pointer;
+        margin-top: 20px;
+        box-shadow: 2px 2px 10px #cc3399;
+    }
+    #romanticMessage {
+        display: none;
+        margin-top: 20px;
+        font-size: 1.5em;
+        color: #330033;
+        line-height: 1.8;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        background: rgba(255, 204, 255, 0.2);
+        padding: 20px;
+        border-radius: 15px;
+    }
+    /* Balloons */
+    .balloon {
+        position: absolute;
+        bottom: -100px;
+        width: 50px;
+        height: 70px;
+        background: red;
+        border-radius: 50% 50% 50% 50%;
+        animation: float 6s infinite ease-in;
+    }
+    @keyframes float {
+        0% { transform: translateY(0) rotate(0deg);}
+        50% { transform: translateY(-800px) rotate(180deg);}
+        100% { transform: translateY(0) rotate(360deg);}
+    }
+    /* Heart animation */
+    .heart {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background: red;
+        transform: rotate(-45deg);
+        animation: heartAnim 5s infinite;
+    }
+    .heart:before, .heart:after {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background: red;
+        border-radius: 50%;
+    }
+    .heart:before { top: -15px; left: 0; }
+    .heart:after { left: 15px; top: 0; }
+    @keyframes heartAnim {
+        0% { transform: translateY(0) rotate(-45deg);}
+        50% { transform: translateY(-400px) rotate(-45deg);}
+        100% { transform: translateY(0) rotate(-45deg);}
+    }
+    /* Fireworks container */
+    #fireworksCanvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+    }
+    /* Cake */
+    #cake {
+        position: relative;
+        width: 200px;
+        height: 150px;
+        margin: 40px auto 20px auto;
+        background: #ff9999;
+        border-radius: 0 0 20px 20px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    }
+    #cake::before {
+        content: '';
+        position: absolute;
+        top: -30px;
+        left: 0;
+        width: 100%;
+        height: 30px;
+        background: #ffcc99;
+        border-radius: 20px 20px 0 0;
+    }
+    /* Candles */
+    .candle {
+        position: absolute;
+        width: 10px;
+        height: 30px;
+        background: #ffffff;
+        top: -30px;
+        border-radius: 2px;
+    }
+    .candle:nth-child(1){ left: 30px; }
+    .candle:nth-child(2){ left: 60px; }
+    .candle:nth-child(3){ left: 90px; }
+    .candle:nth-child(4){ left: 120px; }
+    .candle:nth-child(5){ left: 150px; }
+
+    /* Flame */
+    .flame {
+        position: absolute;
+        width: 8px;
+        height: 15px;
+        top: -15px;
+        left: 1px;
+        background: orange;
+        border-radius: 50%;
+        box-shadow: 0 0 10px yellow;
+        animation: flicker 0.3s infinite alternate;
+    }
+
+    @keyframes flicker {
+        0% { transform: scale(1) translateY(0); opacity:1; }
+        50% { transform: scale(1.2) translateY(-2px); opacity:0.8; }
+        100% { transform: scale(0.9) translateY(1px); opacity:1; }
+    }
+</style>
+</head>
+<body>
+
+<h1>Happy Birthday Anu My Love 🎉❤️</h1>
+<div id="countdown"></div>
+
+<!-- Cake with candles -->
+<div id="cake">
+    <div class="candle"><div class="flame"></div></div>
+    <div class="candle"><div class="flame"></div></div>
+    <div class="candle"><div class="flame"></div></div>
+    <div class="candle"><div class="flame"></div></div>
+    <div class="candle"><div class="flame"></div></div>
+</div>
+
+<button id="messageBtn">Click to Reveal My Love Message 💌</button>
+
+<div id="romanticMessage">
+    My dearest Anu, on your special day,<br>
+    I wish you laughter, love, and endless joy.<br>
+    Every moment with you feels magical and bright.<br>
+    You are my sunshine, my heart, my light.<br>
+    I promise to cherish you, today and forever.<br>
+    Your smile is my happiness, your hug my home.<br>
+    Happy Birthday, my love, let's make dreams come true.<br>
+    Always yours, in every heartbeat. ❤️
+</div>
+
+<!-- Background Music -->
+<audio autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Balloons -->
+<div class="balloon" style="left:10%;background:#ff3399;"></div>
+<div class="balloon" style="left:30%;background:#ff6666;"></div>
+<div class="balloon" style="left:50%;background:#ff99cc;"></div>
+<div class="balloon" style="left:70%;background:#ff66cc;"></div>
+<div class="balloon" style="left:90%;background:#ff3399;"></div>
+
+<!-- Hearts -->
+<div class="heart" style="left:20%; animation-duration:6s;"></div>
+<div class="heart" style="left:40%; animation-duration:5s;"></div>
+<div class="heart" style="left:60%; animation-duration:7s;"></div>
+<div class="heart" style="left:80%; animation-duration:6.5s;"></div>
+
+<!-- Fireworks Canvas -->
+<canvas id="fireworksCanvas"></canvas>
+
+<script>
+// Countdown Timer
+let birthday = new Date("Feb 9, 2026 00:00:00").getTime(); // Birthday set to 9 Feb
+let countdown = setInterval(function() {
+    let now = new Date().getTime();
+    let distance = birthday - now;
+    let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((distance % (1000 * 60 * 60 * 24))/(1000*60*60));
+    let minutes = Math.floor((distance % (1000 * 60 * 60))/(1000*60));
+    let seconds = Math.floor((distance % (1000 * 60))/1000);
+    document.getElementById("countdown").innerHTML = `Countdown: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    if(distance < 0){
+        clearInterval(countdown);
+        document.getElementById("countdown").innerHTML = "🎉 It's Birthday Time! 🎉";
+    }
+}, 1000);
+
+// Show Romantic Message
+document.getElementById("messageBtn").onclick = function(){
+    document.getElementById("romanticMessage").style.display = "block";
+};
+
+// Simple Fireworks Effect
+const canvas = document.getElementById("fireworksCanvas");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+function random(min,max){ return Math.random()*(max-min)+min; }
+
+let fireworks = [];
+class Firework{
+    constructor(){
+        this.x = random(0,canvas.width);
+        this.y = canvas.height;
+        this.radius = random(2,4);
+        this.color = `hsl(${random(0,360)},100%,50%)`;
+        this.speedY = random(3,7);
+        this.particles = [];
+    }
+    update(){
+        this.y -= this.speedY;
+        if(this.y < random(100,400)){
+            for(let i=0;i<30;i++){
+                this.particles.push(new Particle(this.x,this.y,this.color));
+            }
+            this.y = canvas.height;
+        }
+    }
+    draw(){
+        ctx.beginPath();
+        ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+        this.particles.forEach(p=>p.update());
+    }
+}
+
+class Particle{
+    constructor(x,y,color){
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.radius = random(1,3);
+        this.speedX = random(-5,5);
+        this.speedY = random(-5,5);
+        this.life = 50;
+    }
+    update(){
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.life--;
+        ctx.beginPath();
+        ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+    }
+}
+
+for(let i=0;i<5;i++){ fireworks.push(new Firework()); }
+
+function animate(){
+    ctx.fillStyle = 'rgba(0,0,0,0.1)';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    fireworks.forEach(fw=>fw.update());
+    fireworks.forEach(fw=>fw.draw());
+    requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
